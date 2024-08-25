@@ -44,7 +44,7 @@ function App() {
     }));
   };
 
-  const handleSelectedProject = (id) => {
+  const handleSelectProject = (id) => {
     // const selectedProject = selectedProject.projects.find(id);
     // console.log(selectedProject);
     setSelectedProject((prevState) => ({
@@ -79,7 +79,8 @@ function App() {
       <ProjectSidebar
         projects={selectedProject.projects}
         onShowNewProject={handleShowNewProject}
-        onSelectedProject={handleSelectedProject}
+        onSelectProject={handleSelectProject}
+        selectedProjectId={selectedProject.selectedProjectId}
       />
       {content}
     </main>
