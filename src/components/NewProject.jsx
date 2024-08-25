@@ -13,6 +13,10 @@ export default function NewProject({ onAddNewProject }) {
     };
 
     // Validate data...
+    if(data.title.trim() === '' || data.description.trim() === '' || data.dueDate.trim() === ''){
+      
+      return;
+    }
 
     onAddNewProject(data);
   }

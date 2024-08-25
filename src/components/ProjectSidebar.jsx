@@ -10,10 +10,12 @@ export default function ProjectSidebar({ projects, onShowNewProject }) {
       <div>
         <Button onClick={onShowNewProject}>+ Add Project</Button>
       </div>
-      <ul className="flex flex-col items-start align-baseline gap-4 mt-8">
+      <ul className="mt-8">
         {projects.map((project) => (
           <li key={project.id}>
-            <button className="w-full text-left px-2 py-1 rounded-sm my-1 text-stone-400 bg-stone-800">{project.title}</button>
+            <button className="w-full text-left px-2 py-1 rounded-md my-1 text-stone-400 hover:text-stone-200 hover:bg-stone-800">
+              {project.title}
+            </button>
           </li>
         ))}
       </ul>
