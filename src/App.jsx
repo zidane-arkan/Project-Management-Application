@@ -56,6 +56,7 @@ function App() {
       };
     });
   };
+
   // HANDLE PROJECTS
   const handleAddNewProject = (projectData) => {
     const newProject = {
