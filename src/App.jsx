@@ -37,6 +37,15 @@ function App() {
     }));
   };
 
+  const handleSelectedProject = (id) => {
+    // const selectedProject = selectedProject.projects.find(id);
+    // console.log(selectedProject);
+    setSelectedProject((prevState) => ({
+      ...prevState,
+      selectedProjectId: id,
+    }));
+  };
+
   // console.log(selectedProject);
 
   let content = <NoProjectSelected onShowNewProject={handleShowNewProject} />;
