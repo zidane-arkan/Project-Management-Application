@@ -15,6 +15,7 @@ function App() {
     // Undefined = Belum ada project yang dipilih, null = Project sedang ditambahkan tapi belum disimpan, idProject (example = 1) = Project sudah dibuat dan disimpan
     selectedProjectId: undefined,
     projects: [],
+    tasks: [],
   });
 
   const handleShowNewProject = () => {
@@ -31,6 +32,31 @@ function App() {
     }));
   };
 
+  // HANDLE TASK
+  const handleAddTask = (text) => {
+    setSelectedProject((prevState) => {
+      const taskId = Math.random();
+      const newTask = {
+        id: taskId,
+        projectId: prevState.selectedProjectId,
+        text: text,
+      };
+      return {
+        ...prevState,
+        tasks: [newTask, ...prevState.tasks],
+      };
+    });
+  };
+
+  const handleDeleteTask = (id) => {
+    setSelectedProject((prevState) => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((task) => task.id !== id),
+      };
+    });
+  };
+  // HANDLE PROJECTS
   const handleAddNewProject = (projectData) => {
     const newProject = {
       ...projectData,
@@ -82,7 +108,15 @@ function App() {
       (project) => project.id === selectedProject.selectedProjectId
     );
     // console.log(projectSelected);
-    content = <SelectedProject project={projectSelected} onDeleteProject={handleDeleteProject} />;
+    content = (
+      <SelectedProject
+        project={projectSelected}
+        tasks={selectedProject.tasks}
+        onDeleteProject={handleDeleteProject}
+        onAddTask={handleAddTask}
+        onDeleteTask={handleDeleteTask}
+      />
+    );
   }
   return (
     <main className="min-h-screen flex gap-8 my-8">
