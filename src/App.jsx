@@ -53,6 +53,16 @@ function App() {
     }));
   };
 
+  const handleDeleteProject = () => {
+    setSelectedProject((prevState) => ({
+      ...prevState,
+      selectedProjectId: undefined,
+      projects: prevState.projects.filter(
+        ({ id }) => id !== prevState.selectedProjectId
+      ),
+    }));
+  };
+
   // console.log(selectedProject);
 
   let content = <NoProjectSelected onShowNewProject={handleShowNewProject} />;
@@ -72,7 +82,7 @@ function App() {
       (project) => project.id === selectedProject.selectedProjectId
     );
     // console.log(projectSelected);
-    content = <SelectedProject project={projectSelected} />;
+    content = <SelectedProject project={projectSelected} onDeleteProject={handleDeleteProject} />;
   }
   return (
     <main className="min-h-screen flex gap-8 my-8">
