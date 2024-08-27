@@ -7,6 +7,10 @@ const NewTask = ({ onAdd }) => {
   }
 
   function handleClick() {
+    if (enteredTask.trim() === "") {
+      alert("Please add text in input field!");
+      return;
+    }
     onAdd(enteredTask);
     setEnteredTask("");
   }
